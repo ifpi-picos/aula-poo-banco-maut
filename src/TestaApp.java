@@ -9,7 +9,7 @@ public class TestaApp {
 
     Cliente cliente1 = new Cliente();
     cliente1.nome = "Jesiel";
-    cliente1.CPF = "0123";
+    cliente1.CPF = "0123555555";
 
     conta1.cliente = cliente1;
 
