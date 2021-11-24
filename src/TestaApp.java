@@ -8,7 +8,7 @@ public class TestaApp {
     conta1.saldo = 100;
 
     Cliente cliente1 = new Cliente();
-    cliente1.nome = "Jesiel";
+    cliente1.nome = "Jesiel Viana";
     cliente1.CPF = "0123555555";
 
     conta1.cliente = cliente1;
