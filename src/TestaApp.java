@@ -2,21 +2,43 @@ public class TestaApp {
 
   public static void main(String[] args) {
 
-    Conta conta1 = new Conta();
-    conta1.agencia = 123;
-    conta1.numero = 456;
-    conta1.saldo = 100;
+    System.out.println("Abrindo o banco Maut, contas existentes: " + Conta.getQuantidadeDeContas());
 
     Cliente cliente1 = new Cliente();
     cliente1.nome = "Jesiel Viana";
     cliente1.CPF = "0123555555";
 
-    conta1.cliente = cliente1;
+    Conta conta1 = new Conta(123, 45, cliente1);
+    // System.out.println(conta1.getAgencia() + " - " + conta1.getNumero() + " - " +
+    // conta1.getCliente().nome);
 
-    System.out.println("agencia da conta: " + conta1.agencia);
-    System.out.println("número da conta: " + conta1.numero);
-    System.out.println("nome do cliente da conta: " + conta1.cliente.nome);
-    System.out.println("cpf do cliente da conta: " + conta1.cliente.CPF);
+    System.out.println("Quantidade de contas no Banco Maut: " + Conta.getQuantidadeDeContas());
+
+    // conta1.deposita(100);
+    // System.out.println("Saldo atual da conta1: " + conta1.getSaldo());
+
+    // conta1.saca(50);
+    // System.out.println("Saldo atual da conta1: " + conta1.getSaldo());
+
+    // conta1.deposita(500);
+    // System.out.println("Saldo atual da conta1: " + conta1.getSaldo());
+
+    // System.out.println("Saldo atual da conta1: " + conta1.getSaldo());
+
+    // System.out.println(conta1.getAgencia());
+
+    Cliente cliente2 = new Cliente();
+    cliente1.nome = "João Viana";
+    cliente1.CPF = "0123333555";
+
+    Conta conta2 = new Conta(1, 81, cliente2);
+    System.out.println("Quantidade de contas no Banco Maut: " + Conta.getQuantidadeDeContas());
+    // System.out.println(conta2.getSaldo());
+    // conta2.deposita(10000);
+    // System.out.println(conta2.getSaldo());
+
+    Conta conta3 = new Conta(2, 51, cliente2);
+    System.out.println("Quantidade de contas no Banco Maut: " + Conta.getQuantidadeDeContas());
   }
 
 }
