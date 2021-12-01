@@ -15,17 +15,30 @@ public class Conta {
   }
 
   public void deposita(double valor) {
-    this.saldo = this.saldo + valor;
-    System.out.println("Valor depositado, agora sua conta tem: " + saldo);
+    if (valor > 0) {
+      this.saldo = this.saldo + valor;
+      System.out.println("Valor depositado na conta " + this.numero);
+    }
   }
 
-  public void saca(double valor) {
-    if (valor <= this.saldo) {
+  public boolean saca(double valor) {
+    if (valor > 0 && valor <= this.saldo) {
       this.saldo = this.saldo - valor;
-      System.out.println("Valor sacado: " + valor);
+      System.out.println("Valor sacado da conta " + this.numero);
+      return true;
     } else {
       System.out.println("Saque não realizado, valor acima do saldo atual!");
+      return false;
     }
+  }
+
+  public void transfere(double valor, Conta contaDestino) {
+    System.out.println("Iniciando transferência entre contas!");
+    boolean saqueComSucesso = this.saca(valor);
+    if (saqueComSucesso) {
+      contaDestino.deposita(valor);
+    }
+
   }
 
   public double getSaldo() {
