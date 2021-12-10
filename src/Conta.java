@@ -17,6 +17,7 @@ public class Conta {
   public void deposita(double valor) {
     if (valor > 0) {
       this.saldo = this.saldo + valor;
+      this.enviaNotificacao("Depósito", valor);
       System.out.println("Valor depositado na conta " + this.numero);
     }
   }
@@ -25,6 +26,7 @@ public class Conta {
     if (valor > 0 && valor <= this.saldo) {
       this.saldo = this.saldo - valor;
       System.out.println("Valor sacado da conta " + this.numero);
+      this.enviaNotificacao("Saque", valor);
       return true;
     } else {
       System.out.println("Saque não realizado, valor acima do saldo atual!");
@@ -37,8 +39,12 @@ public class Conta {
     boolean saqueComSucesso = this.saca(valor);
     if (saqueComSucesso) {
       contaDestino.deposita(valor);
+      this.enviaNotificacao("Transferência", valor);
     }
+  }
 
+  private void enviaNotificacao(String operacao, double valor) {
+    new Notificacao().enviaEmail(operacao, valor);
   }
 
   public double getSaldo() {
