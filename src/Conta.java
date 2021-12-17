@@ -1,8 +1,8 @@
-public class Conta {
+abstract public class Conta {
   private int agencia;
   private int numero;
   private Cliente cliente;
-  private double saldo;
+  protected double saldo;
 
   private static int quantidadeDeContas;
 
@@ -22,17 +22,7 @@ public class Conta {
     }
   }
 
-  public boolean saca(double valor) {
-    if (valor > 0 && valor <= this.saldo) {
-      this.saldo = this.saldo - valor;
-      System.out.println("Valor sacado da conta " + this.numero);
-      this.enviaNotificacao("Saque", valor);
-      return true;
-    } else {
-      System.out.println("Saque não realizado, valor acima do saldo atual!");
-      return false;
-    }
-  }
+  abstract public boolean saca(double valor);
 
   public void transfere(double valor, Conta contaDestino) {
     System.out.println("Iniciando transferência entre contas!");
@@ -43,7 +33,7 @@ public class Conta {
     }
   }
 
-  private void enviaNotificacao(String operacao, double valor) {
+  protected void enviaNotificacao(String operacao, double valor) {
     new Notificacao().enviaEmail(operacao, valor);
   }
 
