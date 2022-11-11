@@ -3,15 +3,21 @@ abstract public class Conta {
   private int numero;
   private Cliente cliente;
   protected double saldo;
+  Notificacao notificacao;
 
   private static int quantidadeDeContas;
 
-  public Conta(int agencia, int numero, Cliente cliente) {
+  public Conta(int agencia, int numero, Cliente cliente, Notificacao notificacao) {
     System.out.println("Construindo objeto da classe conta");
     quantidadeDeContas++;
     this.agencia = agencia;
     this.numero = numero;
     this.cliente = cliente;
+    this.notificacao = notificacao;
+  }
+
+  public void alteraFormaDeNotificacao(Notificacao n) {
+    this.notificacao = n;
   }
 
   public void deposita(double valor) {
@@ -34,7 +40,7 @@ abstract public class Conta {
   }
 
   protected void enviaNotificacao(String operacao, double valor) {
-    new Notificacao().enviaEmail(operacao, valor);
+    this.notificacao.envia(operacao +" valor: " + valor);
   }
 
   public double getSaldo() {

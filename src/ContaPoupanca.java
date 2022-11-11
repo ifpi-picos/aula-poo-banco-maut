@@ -2,8 +2,8 @@ public class ContaPoupanca extends Conta {
 
   private double rendimento;
 
-  public ContaPoupanca(int agencia, int numero, Cliente cliente) {
-    super(agencia, numero, cliente);
+  public ContaPoupanca(int agencia, int numero, Cliente cliente, Notificacao n) {
+    super(agencia, numero, cliente, n);
     this.rendimento = 0.02;
   }
 
